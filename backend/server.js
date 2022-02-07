@@ -1,6 +1,8 @@
  const express = require('express');
  const cors = require('cors');
  const mongoose = require('mongoose');
+ const exerciseRoute = require('./routes/exercises');
+ const userRoute = require('./routes/users');
 
  require('dotenv').config();
 
@@ -16,6 +18,8 @@
      console.log("Connection with mongo established succesfully");
  } );
 
+ app.use('/exercises', exerciseRoute);
+ app.use('/users', userRoute);
  app.listen(port, () => {
      console.log(`Server started at port: ${port}`)
  })
